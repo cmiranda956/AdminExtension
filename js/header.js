@@ -1,12 +1,9 @@
-const loc = document.getElementById('TabMenu');
-const adminMenu = document.createElement('li');
-
+const loc = document.getElementsByClassName('suit-status')[0];
+const adminMenu = document.createElement('div');
 adminMenu.innerHTML = `
-    <li>
         <button class="dropdown-item" id="toggleHeader"> 
             Toggle Header 
         </button>
-    </li>
     `
 loc.appendChild(adminMenu);
 
