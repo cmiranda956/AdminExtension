@@ -1,4 +1,4 @@
-const loc = document.getElementsByClassName('suit-status suit-nav--mobile-hidden')[0];
+const loc = document.getElementsByClassName('suit-status')[0];
 const adminMenu = document.createElement('div');
 adminMenu.classList.add('dropdown');
 adminMenu.innerHTML = `  
