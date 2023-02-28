@@ -1,8 +1,8 @@
-const loc = document.getElementById('TabMenu');
-const adminMenu = document.createElement('li');
-
+const loc = document.getElementsByClassName('suit-nav-item--overflow suit-nav-item--overflow--highlighted')[0];
+const adminMenu = document.createElement('div');
+adminMenu.classList.add('dropdown');
 adminMenu.innerHTML = `
-    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="adminMenu">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" id="adminMenu">
         <i class="fa fa-cog"></i> Admin
     </button>
     <ul class="dropdown-menu" aria-labelledby="adminMenu">
@@ -12,7 +12,7 @@ adminMenu.innerHTML = `
             </button>
         </li>
     </ul>
-`
+    `
 loc.appendChild(adminMenu);
 
 document.getElementById('toggleHeader').addEventListener('click', () => {
