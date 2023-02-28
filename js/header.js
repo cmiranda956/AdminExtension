@@ -1,4 +1,4 @@
-const loc = document.getElementsByClassName('suit-status')[0];
+const loc = document.getElementById('TabMenu');
 loc.appendChild(adminMenu);
 
 const adminMenu = document.createElement('li');
