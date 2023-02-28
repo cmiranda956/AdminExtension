@@ -1,7 +1,6 @@
 const loc = document.getElementById('TabMenu');
-loc.appendChild(adminMenu);
-
 const adminMenu = document.createElement('li');
+
 adminMenu.innerHTML = `
   <a class="btn btn-secondary dropdown-toggle"  data-bs-toggle="dropdown" id="adminMenu">
      <i class="fa fa-cog"></i> Admin
@@ -14,6 +13,8 @@ adminMenu.innerHTML = `
       </li>
   </ul>
 `
+loc.appendChild(adminMenu);
+
 document.getElementById('toggleHeader').addEventListener('click', () => {
     toggleHeader();
 });
@@ -23,8 +24,3 @@ function toggleHeader() {
     if(header.style.display == '') header.style.display = 'none';
     else header.style.display = '';
 }
-
-
-
-
-//export { toggleHeader };
