@@ -1,7 +1,7 @@
 const loc = document.getElementsByClassName('suit-status')[0];
 const adminMenu = document.createElement('div');
 adminMenu.innerHTML = `
-        <button class="dropdown-item" id="toggleHeader"> 
+        <button type="button" class="dropdown-item" id="toggleHeader"> 
             Toggle Header 
         </button>
     `
