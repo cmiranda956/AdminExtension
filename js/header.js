@@ -1,4 +1,4 @@
-const loc = document.getElementsByClassName('TabMenu');
+const loc = document.getElementById('TabMenu');
 const adminMenu = document.createElement('li');
 
 adminMenu.innerHTML = `
