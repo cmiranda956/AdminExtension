@@ -2,9 +2,9 @@ const loc = document.getElementsByClassName('suit-status')[0];
 const adminMenu = document.createElement('div');
 adminMenu.classList.add('dropdown');
 adminMenu.innerHTML = `
-  <a href="#" class="btn bg-gradient-dark dropdown-toggle " data-bs-toggle="dropdown" id="adminMenu">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="adminMenu">
      <i class="fa fa-cog" /> Admin
-  </a>
+  </button>
   <ul class="dropdown-menu" aria-labelledby="adminMenu">
       <li>
           <a class="dropdown-item" href="#">
