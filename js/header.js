@@ -2,9 +2,9 @@ const loc = document.getElementsByClassName('suit-nav-item--overflow suit-nav-it
 const adminMenu = document.createElement('div');
 adminMenu.classList.add('dropdown');
 adminMenu.innerHTML = `
-    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" id="adminMenu">
+    <a href="#" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" id="adminMenu">
         <i class="fa fa-cog"></i> Admin
-    </button>
+    </a>
     <ul class="dropdown-menu" aria-labelledby="adminMenu">
         <li>
             <button type="button" class="dropdown-item" id="toggleHeader"> 
