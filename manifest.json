@@ -1,0 +1,22 @@
+{
+    "name": "Admin tools",
+    "description": "Useful tools for WebEOC",
+    "version": "0.1",
+    "manifest_version": 3,
+    "content_scripts": [
+        {
+            "matches": ["https://*.bcfs.net/*"],
+            "js": ["js/header.js"]
+        }
+    ],
+    "permissions": [
+        "contextMenus",
+        "scripting"
+    ],
+    "icons": {
+        "16":"./img/16x16.png",
+        "32":"./img/32x32.png",
+        "48":"./img/48x48.png",
+        "128":"./img/128x128.png"
+    }
+}
