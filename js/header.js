@@ -2,17 +2,12 @@ const loc = document.getElementById('TabMenu');
 const adminMenu = document.createElement('li');
 
 adminMenu.innerHTML = `
-  <a class="btn btn-secondary dropdown-toggle"  data-bs-toggle="dropdown" id="adminMenu">
-     <i class="fa fa-cog"></i> Admin
-  </a>
-  <ul class="dropdown-menu" aria-labelledby="adminMenu">
-      <li>
-          <button class="dropdown-item" id="toggleHeader"> 
+    <li>
+        <button class="dropdown-item" id="toggleHeader"> 
             Toggle Header 
-          </button>
-      </li>
-  </ul>
-`
+        </button>
+    </li>
+    `
 loc.appendChild(adminMenu);
 
 document.getElementById('toggleHeader').addEventListener('click', () => {
