@@ -1,9 +1,9 @@
 const loc = document.getElementsByClassName('suit-status')[0];
 const adminMenu = document.createElement('div');
 adminMenu.classList.add('dropdown');
-adminMenu.innerHTML = `  
+adminMenu.innerHTML = `
   <a href="#" class="btn bg-gradient-dark dropdown-toggle " data-bs-toggle="dropdown" id="adminMenu">
-      <img src="img/32x32.png" /> Admin
+     <i class="fa fa-cog" /> Admin
   </a>
   <ul class="dropdown-menu" aria-labelledby="adminMenu">
       <li>
