@@ -1,10 +1,11 @@
 const loc = document.getElementsByClassName('suit-status')[0];
-const adminMenu = document.createElement('div');
-adminMenu.classList.add('dropdown');
+loc.appendChild(adminMenu);
+
+const adminMenu = document.createElement('li');
 adminMenu.innerHTML = `
-  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="adminMenu">
+  <a class="btn btn-secondary dropdown-toggle"  data-bs-toggle="dropdown" id="adminMenu">
      <i class="fa fa-cog"></i> Admin
-  </button>
+  </a>
   <ul class="dropdown-menu" aria-labelledby="adminMenu">
       <li>
           <button class="dropdown-item" id="toggleHeader"> 
@@ -13,8 +14,6 @@ adminMenu.innerHTML = `
       </li>
   </ul>
 `
-loc.appendChild(adminMenu);
-
 document.getElementById('toggleHeader').addEventListener('click', () => {
     toggleHeader();
 });
