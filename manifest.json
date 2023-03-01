@@ -15,7 +15,9 @@
     "permissions": [
         "scripting",
         "webRequest",
-        "activeTab",
+        "activeTab"
+    ],
+    "host_permissions": [
         "https://192.168.100.100/*"
     ],
     "icons": {
