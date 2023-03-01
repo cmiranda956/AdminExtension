@@ -1,5 +1,5 @@
 console.log('we are in the script.js');
-let menu = document.getElementById('adminMenu');
+(function() {let menu = document.getElementById('adminMenu');
 menu.classList.add('dropdown');
 menu.innerHTML = `
     <button class="btn btn-secondary dropdown-toggle" type="button" id="adminMenu" data-toggle="dropdown" aria-haspopup="true" area-expanded="false">
@@ -9,6 +9,7 @@ menu.innerHTML = `
         <a class="dropdown-item" id="toggleHeader">Toggle Header </a>
     </div>
     `
+})();
 
 document.getElementById('toggleHeader').addEventListener('click', () => {
     toggleHeader();
