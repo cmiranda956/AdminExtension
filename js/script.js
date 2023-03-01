@@ -1,3 +1,4 @@
+console.log('we are in the script.js');
 const adminMenu = document.getElementById('adminMenu');
 adminMenu.classList.add('dropdown');
 adminMenu.innerHTML = `
