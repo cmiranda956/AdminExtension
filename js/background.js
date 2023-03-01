@@ -8,6 +8,6 @@ chrome.webRequest.onCompleted.addListener((details) => {
     let tabId = details.tabId;
     chrome.scripting.executeScript({
         target: {tabId: tabId},
-        files: ["script.js"]
+        files: ["js/script.js"]
     });
 }, requestFilter);
