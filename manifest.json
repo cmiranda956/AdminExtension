@@ -3,10 +3,13 @@
     "description": "Useful tools for WebEOC",
     "version": "0.1",
     "manifest_version": 3,
+    "background": {
+        "service_worker": "background.js"
+    },
     "content_scripts": [
         {
             "matches": ["https://*.192.168.100.100/*"],
-            "js": ["js/header.js"]
+            "js": ["js/script.js"]
         }
     ],
     "permissions": [
