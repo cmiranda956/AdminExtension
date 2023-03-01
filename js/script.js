@@ -1,5 +1,5 @@
 console.log('we are in the script.js');
-const adminMenu = document.getElementById('adminMenu');
+let adminMenu = document.getElementById('adminMenu');
 adminMenu.classList.add('dropdown');
 adminMenu.innerHTML = `
     <button class="btn btn-secondary dropdown-toggle" type="button" id="adminMenu" data-toggle="dropdown" aria-haspopup="true" area-expanded="false">
