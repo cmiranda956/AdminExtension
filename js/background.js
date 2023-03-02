@@ -22,14 +22,16 @@ chrome.runtime.onMessage.addListener((message, sender, response) => {
     console.log(message.message);
     if(message.message == 'toggleMobile') {
         chrome.windows.getCurrent((window) => {
+            let mobileHeight = 390;
+            let mobileWidth = 844;
             let updateInfo = {
                 width: 1920,
                 height: 1080,
                 state: 'normal'
             };
-            if(window.width !== 300) {
-                updateInfo.width = 300;
-                updateInfo.height = 430;
+            if(window.width !== mobileWidth) {
+                updateInfo.width = mobileWidth;
+                updateInfo.height = mobileHeight;
             }
             chrome.windows.update(window.id, updateInfo);
         });
