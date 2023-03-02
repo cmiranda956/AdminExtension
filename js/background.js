@@ -4,7 +4,7 @@ const requestFilter = {
 }
 
 chrome.webRequest.onCompleted.addListener((details) => {
-    if(!menuExists) return;
+    if(menuExists) return;
 
     let frameId = details.frameId;
     let tabId = details.tabId;
