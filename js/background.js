@@ -4,6 +4,7 @@ const requestFilter = {
 
 chrome.webRequest.onCompleted.addListener((details) => {
     console.log('Board finished loading');
+    console.log({frameId, tabId});
     let frameId = details.frameId;
     let tabId = details.tabId;
     chrome.scripting.executeScript({
