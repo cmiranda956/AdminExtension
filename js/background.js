@@ -20,7 +20,7 @@ chrome.webRequest.onCompleted.addListener((details) => {
 
 chrome.runtime.onMessage.addListener((message, sender, response) => {
     console.log(message.message);
-    if(message.message == 'toggle') {
+    if(message.message == 'toggleMobile') {
         chrome.windows.getCurrent((window) => {
             let updateInfo = {
                 width: window.screen.availWidth,
