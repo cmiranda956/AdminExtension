@@ -1,5 +1,5 @@
 function toggleHeader() {
-    const header = document.querySelector('#header .juvare');
+    const header = document.querySelector('#header > .juvare');
     if(header.style.display == '') header.style.display = 'none';
     else header.style.display = '';
 }
