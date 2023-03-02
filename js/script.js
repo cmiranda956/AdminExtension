@@ -10,7 +10,7 @@
             <i class="material-icons">admin_panel_settings</i> Admin
         </button>
         <div class="dropdown-menu" aria-labelledby="adminMenu">
-            <button class="dropdown-item" id="toggleHeader">Toggle Header </button>
+            <a class="dropdown-item" id="toggleHeader">Toggle Header </a>
         </div>
         `
 })();
