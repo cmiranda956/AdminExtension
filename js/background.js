@@ -19,6 +19,7 @@ chrome.webRequest.onCompleted.addListener((details) => {
 }, requestFilter);
 
 chrome.runtime.onMessage.addListener((message, sender, response) => {
+    console.log(message.message);
     if(message.message == 'toggle') {
         chrome.windows.getCurrent((window) => {
             let updateInfo = {
