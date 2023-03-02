@@ -21,6 +21,6 @@ function toggleHeader() {
     else header.style.display = '';
 }
 
-document.getElementById('toggleHeader').addEventListener('click', () => {
-   toggleHeader();
-});
+//document.getElementById('toggleHeader').addEventListener('click', () => {
+//   toggleHeader();
+//});
