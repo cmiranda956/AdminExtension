@@ -6,6 +6,10 @@
     "background": {
         "service_worker": "js/background.js"
     },
+    "content_scripts": [{
+        "matches": "https://192.168.100.100/eoc9/boards/board.aspx*",
+        "js": ["js/header.js"]
+    }],
     "permissions": [
         "scripting",
         "webRequest",
