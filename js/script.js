@@ -1,6 +1,5 @@
 (function() {
     const menu = document.getElementById('adminMenu');
-    const header = window.parent.document.querySelector('#header > .juvare');
     if(!menu) {
         console.log('adminMenu not found');
         return;
@@ -19,14 +18,7 @@
     });
 
     function toggleHeader() {
-        if(!header) {
-            let main = document.getElementById('main-section');
-            let child = document.createElement('div');
-            child.innerHTML = 'Hello';
-            main.appendChild(child);
-            console.log('Header querySlector is null');
-            return
-        }
+        const header = window.top.document.querySelector('#header > .juvare');
         if(header.style.display == '') header.style.display = 'none';
         else header.style.display = '';
     }
