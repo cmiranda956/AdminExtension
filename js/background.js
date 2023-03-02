@@ -10,7 +10,7 @@ chrome.webRequest.onCompleted.addListener((details) => {
     chrome.scripting.executeScript({
         target: {
             tabId: tabId, 
-            frameIds: [frameId]
+            allFrames: true
         },
         files: ["js/script.js"]
     });
