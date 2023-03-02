@@ -1,6 +1,6 @@
 (function() {
     const menu = document.getElementById('adminMenu');
-    const header = document.querySelector('#header > .juvare');
+    const header = window.parent.document.querySelector('#header > .juvare');
     if(!menu) {
         console.log('adminMenu not found');
         return;
