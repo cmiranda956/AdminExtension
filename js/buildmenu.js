@@ -13,6 +13,9 @@
             <a class="dropdown-item" id="toggleHeader">Toggle Header </a>
         </div>
         `
+    document.getElementById('toggleHeader').addEventListener('click', () => {
+        toggleHeader();
+    });
 })();
 
 

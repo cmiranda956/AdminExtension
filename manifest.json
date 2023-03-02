@@ -8,7 +8,7 @@
     },
     "content_scripts": [
         {
-        "matches": ["https://192.168.100.100/eoc9/boards/board.aspx*"],
+        "matches": ["https://192.168.100.100/*"],
         "js": ["js/header.js"]
         }
     ],
