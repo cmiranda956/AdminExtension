@@ -1,5 +1,6 @@
 (function() {
     const menu = document.getElementById('adminMenu');
+    const header = document.querySelector('#header > .juvare');
     if(!menu) {
         console.log('adminMenu not found');
         return;
@@ -18,7 +19,10 @@
     });
 
     function toggleHeader() {
-        const header = document.querySelector('#header > .juvare');
+        if(!header) {
+            console.log('Header querySlector is null');
+            return
+        }
         if(header.style.display == '') header.style.display = 'none';
         else header.style.display = '';
     }
