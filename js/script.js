@@ -1,3 +1,9 @@
+function toggleHeader() {
+    const header = document.querySelector('#header .juvare');
+    if(header.style.display == '') header.style.display = 'none';
+    else header.style.display = '';
+}
+
 (function() {
     const menu = document.getElementById('adminMenu');
     if(!menu) {
@@ -17,11 +23,6 @@
         toggleHeader();
     });
 
-    function toggleHeader() {
-        const header = document.querySelector('#header .juvare');
-        if(header.style.display == '') header.style.display = 'none';
-        else header.style.display = '';
-    }
 })();
 
 
