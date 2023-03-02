@@ -8,7 +8,10 @@ chrome.webRequest.onCompleted.addListener((details) => {
     let tabId = details.tabId;
     console.log({frameId, tabId});
     chrome.scripting.executeScript({
-        target: { tabId: tabId, allFrames: true },
+        target: {
+            tabId: tabId, 
+            frameIds: [frameId]
+        },
         files: ["js/script.js"]
     });
 }, requestFilter);
