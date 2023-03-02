@@ -13,7 +13,7 @@ chrome.webRequest.onCompleted.addListener((details) => {
             tabId: tabId, 
             allFrames: true
         },
-        files: ["js/buildmenu.js"]
+        files: ["js/script.js"]
     }); 
     menuExists = true; 
 }, requestFilter);
