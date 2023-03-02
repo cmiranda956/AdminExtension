@@ -1,5 +1,5 @@
 const requestFilter = {
-    urls: ['https://192.168.100.100/*'],
+    urls: ['https://192.168.100.100/eoc9/boards/*'],
 }
 
 chrome.webRequest.onCompleted.addListener((details) => {
@@ -7,7 +7,7 @@ chrome.webRequest.onCompleted.addListener((details) => {
     let frameId = details.frameId;
     let tabId = details.tabId;
     chrome.scripting.executeScript({
-        target: {tabId: tabId},
+        target: { tabId: tabId },
         files: ["js/script.js"]
     });
 }, requestFilter);

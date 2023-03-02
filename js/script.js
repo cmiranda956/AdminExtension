@@ -15,9 +15,9 @@
         `
 })();
 
-document.getElementById('toggleHeader').addEventListener('click', () => {
-    toggleHeader();
-});
+//document.getElementById('toggleHeader').addEventListener('click', () => {
+//   toggleHeader();
+//});
 
 function toggleHeader() {
     var header = document.querySelector('#header .juvare');
