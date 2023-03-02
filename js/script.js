@@ -1,11 +1,12 @@
 (function() {
-    const menu = document.getElementById('adminMenu');
+    const menu = document.querySelector('.adminMenu');
     if(!menu) {
         console.log('adminMenu not found');
         return;
     }
-    menu.classList.add('dropdown');
-    menu.innerHTML = `
+    for(let i = 0; i < menu.length; i++ {
+        menu.classList.add('dropdown');
+        menu.innerHTML = `
         <button class="btn btn-sm btn-outline-warning dropdown-toggle" type="button" id="adminMenu" data-toggle="dropdown" aria-haspopup="true" area-expanded="false">
             <i class="material-icons">admin_panel_settings</i> Admin
         </button>
@@ -15,6 +16,7 @@
             <a class="dropdown-item" id="xml">XML</a>
         </div>
         `
+    }
     document.getElementById('toggleHeader').addEventListener('click', () => {
         const header = window.top.document.querySelector('#header > .juvare');
         if(header.style.display == '') header.style.display = 'none';
