@@ -4,7 +4,7 @@
         console.log('adminMenu not found');
         return;
     }
-    for(let i = 0; i < menu.length; i++ {
+    for(let i = 0; i < menu.length; i++) {
         menu.classList.add('dropdown');
         menu.innerHTML = `
         <button class="btn btn-sm btn-outline-warning dropdown-toggle" type="button" id="adminMenu" data-toggle="dropdown" aria-haspopup="true" area-expanded="false">
