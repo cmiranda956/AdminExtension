@@ -13,14 +13,15 @@
             <a class="dropdown-item" id="toggleHeader">Toggle Header </a>
         </div>
         `
+    document.getElementById('toggleHeader').addEventListener('click', () => {
+        toggleHeader();
+    });
+
+    function toggleHeader() {
+        const header = document.querySelector('#header .juvare');
+        if(header.style.display == '') header.style.display = 'none';
+        else header.style.display = '';
+    }
 })();
 
-function toggleHeader() {
-    var header = document.querySelector('#header .juvare');
-    if(header.style.display == '') header.style.display = 'none';
-    else header.style.display = '';
-}
 
-document.getElementById('toggleHeader').addEventListener('click', () => {
-   toggleHeader();
-});
