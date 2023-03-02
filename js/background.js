@@ -17,3 +17,20 @@ chrome.webRequest.onCompleted.addListener((details) => {
     }); 
     menuExists = true; 
 }, requestFilter);
+
+chrome.runtime.onMessage.addListener((message, sender, response) => {
+    if(message.message == 'toggle') {
+        chrome.windows.getCurrent((window) => {
+            let updateInfo = {
+                width: window.screen.availWidth,
+                height: window.screen.availHeight,
+                state: 'normal'
+            };
+            if(window.width !== 300) {
+                updateInfo.width = 300;
+                updateInfo.height = 430;
+            }
+            chrome.windows.update(window.id, updateInfo);
+        });
+    }
+});
