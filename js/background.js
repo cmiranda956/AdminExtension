@@ -3,15 +3,12 @@ const requestFilter = {
 }
 
 chrome.webRequest.onCompleted.addListener((details) => {
-    console.log('Board finished loading');
+    console.log(details);
     let frameId = details.frameId;
     let tabId = details.tabId;
     console.log({frameId, tabId});
     chrome.scripting.executeScript({
-        target: {
-            tabId: tabId,
-            frameIds: [frameId]
-        },
+        target: { tabId: tabId, allFrames: true },
         files: ["js/script.js"]
     });
 }, requestFilter);
