@@ -1,5 +1,5 @@
 const requestFilter = {
-    urls: ['https://192.168.100.100/eoc9/boards//board.aspx?tableid=*'],
+    urls: ['https://192.168.100.100/eoc9/boards//board.aspx*'],
 }
 
 chrome.webRequest.onCompleted.addListener((details) => {
