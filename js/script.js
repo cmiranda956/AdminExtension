@@ -20,6 +20,10 @@
 
     function toggleHeader() {
         if(!header) {
+            let main = document.getElementById('main-section');
+            let child = document.createElement('div');
+            child.innerHTML = 'Hello';
+            main.appendChild(child);
             console.log('Header querySlector is null');
             return
         }
