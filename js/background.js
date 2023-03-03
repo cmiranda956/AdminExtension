@@ -1,4 +1,3 @@
-let menuExists = false;
 const requestFilter = {
     urls: ['https://192.168.100.100/eoc9/boards/board.aspx*'],
 }
@@ -16,7 +15,6 @@ chrome.webRequest.onCompleted.addListener((details) => {
         },
         files: ["js/script.js"]
     }); 
-    menuExists = true; 
 }, requestFilter);
 
 chrome.runtime.onMessage.addListener((message, sender, response) => {
