@@ -12,7 +12,7 @@
         "activeTab"
     ],
     "host_permissions": [
-        "https://192.168.100.100/*"
+        "https://webeoc.bcfs.net/eoc7/*"
     ],
     "icons": {
         "16":"./img/16x16.png",

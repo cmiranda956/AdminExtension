@@ -1,5 +1,5 @@
 const requestFilter = {
-    urls: ['https://192.168.100.100/eoc9/boards/board.aspx*'],
+    urls: ['https://webeoc.bcfs.net/eoc7/*'],
 }
 
 chrome.webRequest.onCompleted.addListener((details) => {

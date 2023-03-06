@@ -7,12 +7,12 @@
     menu.classList.add('dropdown');
     menu.innerHTML = `
         <button class="btn btn-sm btn-outline-warning dropdown-toggle" type="button" id="adminMenu" data-toggle="dropdown" aria-haspopup="true" area-expanded="false">
-            <i class="material-icons">admin_panel_settings</i> Admin
+            <i class="fa fa-cog">admin_panel_settings</i> Admin
         </button>
         <div class="dropdown-menu" aria-labelledby="adminMenu">
-            <a class="dropdown-item" id="toggleHeader">Toggle Header</a>
-            <a class="dropdown-item" id="toggleMobile">Toggle Mobile</a>
-            <a class="dropdown-item" id="xml">XML</a>
+            <button class="dropdown-item" id="toggleHeader">Toggle Header</button>
+            <button class="dropdown-item" id="toggleMobile">Toggle Mobile</button>
+            <button class="dropdown-item" id="xml">XML</button>
         </div>
         `
     document.getElementById('toggleHeader').addEventListener('click', () => {
