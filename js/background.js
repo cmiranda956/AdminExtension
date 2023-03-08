@@ -1,13 +1,20 @@
-import { passwordReset, getUserList, executePasswordReset, goToUserDetails } from './useradmin.js';
+import { beginPasswordReset, getUserList, executePasswordReset, goToUserDetails } from './useradmin.js';
 
-const requestFilter = { urls: ['https://webeoc.bcfs.net/eoc7/boards/*'] };
+const boardFilter = { urls: ['https://webeoc.bcfs.net/eoc7/boards/*'] };
 const homepageFilter = { urls: ['https://webeoc.bcfs.net/eoc7/home*'] };
-const adminFilter = { urls: ['https://webeoc.bcfs.net/eoc7/admin/users/list.aspx'] };
+const adminUserListFilter = { urls: ['https://webeoc.bcfs.net/eoc7/admin/users/list.aspx'] };
 const userDetailFilter = { urls: ['https://webeoc.bcfs.net/eoc7/admin/users/detail.aspx?userid=*'] };
 
 let arrUsers = [];
 let isDownloaded = false;
 
+// Reset flag after chrome shutdown
+chrome.runtime.onStartup.addListener(() => {
+    isDownloaded = false;
+});
+
+// Create context menu item (right click menu) on installation
+// Option only available on highlighted text
 chrome.runtime.onInstalled.addListener(() => {
     chrome.contextMenus.create({
         title: 'Reset Password',
@@ -16,6 +23,15 @@ chrome.runtime.onInstalled.addListener(() => {
     });
 });
 
+chrome.contextMenus.onClicked.addListener(info => {
+    switch(info.menuItemId) {
+        case 'passwordReset':
+            beginPasswordReset(info.selectionText);
+            break;
+    }
+});
+
+// Listens on all frames, attempting to build admin menu dropdown
 chrome.webRequest.onCompleted.addListener((details) => {
     let tabId = details.tabId;
 
@@ -26,10 +42,10 @@ chrome.webRequest.onCompleted.addListener((details) => {
         },
         files: ["js/createAdminMenu.js"]
     });
-}, requestFilter);
+}, boardFilter);
 
-
-
+// Listens for home tab within webeoc to be loaded as it is only loaded once at login
+// Triggers boardscript call to download list of all users if not already downloaded
 chrome.webRequest.onCompleted.addListener(details => {
     if(isDownloaded) {
         console.log('User list already downloaded');
@@ -44,7 +60,21 @@ chrome.webRequest.onCompleted.addListener(details => {
     });
 }, homepageFilter);
 
-// USAGE: args[command, url?, tabid?]
+// ************************************************************************
+// USAGE:
+//      chrome.runtime.sendMessage({message: [command, tabId?]});
+//
+// COMMANDS:
+//      toggleMobile      [command]
+//      passwordReset     [command, tabId]
+//      searchUser        [command, tabId]
+// NOTES:
+//      - Message must be sent from content-script/function. Eg. Executed from
+//      the context of the webpage and not the extension.
+//      - Currently using as primary method of injecting scripts on pages
+//      whose elements load after ajax calls. Ex. User details, STAR board.
+//      - Each listener will auto delete itself after operation is completed.
+//**************************************************************************
 chrome.runtime.onMessage.addListener((message, sender, response) => {
     let args = message.message
     switch(args[0]) {
@@ -57,12 +87,12 @@ chrome.runtime.onMessage.addListener((message, sender, response) => {
                 });
                 chrome.webRequest.onCompleted.removeListener(searchUserListener);
             };
-            chrome.webRequest.onCompleted.addListener(searchUserListener, adminFilter);
+            chrome.webRequest.onCompleted.addListener(searchUserListener, adminUserListFilter);
             break;
         case 'passwordReset':
             const userDetailListener = () => {
                 chrome.scripting.executeScript({
-                    target: {tabId: args[2]},
+                    target: {tabId: args[1]},
                     func: executePasswordReset
                 });
                 chrome.webRequest.onCompleted.removeListener(userDetailListener);
@@ -87,16 +117,4 @@ chrome.runtime.onMessage.addListener((message, sender, response) => {
             });
             break;
     }
-});
-
-chrome.contextMenus.onClicked.addListener(info => {
-    switch(info.menuItemId) {
-        case 'passwordReset':
-            passwordReset(info.selectionText);
-            break;
-    }
-});
-
-chrome.runtime.onStartup.addListener(() => {
-    isDownloaded = false;
 });

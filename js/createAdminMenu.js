@@ -1,3 +1,11 @@
+//***************************************************
+// USAGE:
+//      Automatically executed in every frame and
+//      attempts to build the admin menu.
+//
+// NOTES:
+//      No current mobile view implementation.
+//***************************************************
 (function() {
     const menu = document.getElementById('adminMenu');
     if(!menu) return;
@@ -25,5 +33,3 @@
         chrome.runtime.sendMessage({ message: ['toggleMobile'] });
     });
 })();
-
-
