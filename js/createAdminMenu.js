@@ -1,9 +1,6 @@
 (function() {
     const menu = document.getElementById('adminMenu');
-    if(!menu) {
-        console.log('adminMenu not found');
-        return;
-    }
+    if(!menu) return;
     menu.classList.add('dropdown');
     menu.innerHTML = `
         <button class="btn btn-sm btn-outline-warning dropdown-toggle" type="button" id="adminMenu" data-toggle="dropdown" aria-haspopup="true" area-expanded="false">
@@ -20,13 +17,12 @@
         if(header.style.display == '') header.style.display = 'none';
         else header.style.display = '';
     });
-
     document.getElementById('xml').addEventListener('click', () => {
         const url = window.location.toString().replace(/=DATA/,'=XML').replace(/view-source:/,'');
         window.open(url, '_blank');
     });
     document.getElementById('toggleMobile').addEventListener('click', () => {
-        chrome.runtime.sendMessage({ message: 'toggleMobile' });
+        chrome.runtime.sendMessage({ message: ['toggleMobile'] });
     });
 })();
 

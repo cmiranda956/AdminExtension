@@ -4,15 +4,19 @@
     "version": "0.1",
     "manifest_version": 3,
     "background": {
-        "service_worker": "js/background.js"
+        "service_worker": "js/background.js",
+        "type": "module"
     },
     "permissions": [
         "scripting",
         "webRequest",
-        "activeTab"
+        "contextMenus"
     ],
+    "action": {
+        "default_title": "Testing actions"
+    },
     "host_permissions": [
-        "https://webeoc.bcfs.net/eoc7/*"
+        "https://webeoc.bcfs.net/eoc7/boards*"
     ],
     "icons": {
         "16":"./img/16x16.png",
