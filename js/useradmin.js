@@ -67,7 +67,7 @@ export function beginPasswordReset(username) {
 }
 //**********************************************************************
 // USAGE:
-//      Queries the Rest API for the user list of all users.
+//      Queries the Rest API for the list of all users.
 //**********************************************************************
 export function getUserList() {
     return fetch(`${baseURL}/users`).then(response => { return response.json() });

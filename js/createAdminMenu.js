@@ -1,10 +1,15 @@
 //***************************************************
 // USAGE:
-//      Automatically executed in every frame and
-//      attempts to build the admin menu.
+//      Attempts to build dropdown admin menu in every
+//      board that is opened.
 //
 // NOTES:
-//      No current mobile view implementation.
+//       - Function exits if no element with id "adminMenu"
+//      exists within the board frame.
+//       - No current mobile view implementation.
+// TODO:
+//       - Change from id to class so multiple dropdowns
+//      can be placed.
 //***************************************************
 (function() {
     const menu = document.getElementById('adminMenu');

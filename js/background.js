@@ -49,7 +49,7 @@ chrome.webRequest.onCompleted.addListener((details) => {
 chrome.webRequest.onCompleted.addListener(details => {
     if(isDownloaded) {
         console.log('User list already downloaded');
-        return
+        return;
     }
     getUserList().then(response => {
         arrUsers = response;
@@ -65,9 +65,9 @@ chrome.webRequest.onCompleted.addListener(details => {
 //      chrome.runtime.sendMessage({message: [command, tabId?]});
 //
 // COMMANDS:
-//      toggleMobile      [command]
-//      passwordReset     [command, tabId]
-//      searchUser        [command, tabId]
+//      toggleMobile      ['toggleMobile']
+//      passwordReset     ['passwordReset', tabId]
+//      searchUser        ['searchUser', tabId]
 // NOTES:
 //      - Message must be sent from content-script/function. Eg. Executed from
 //      the context of the webpage and not the extension.
