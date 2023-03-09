@@ -1,6 +1,0 @@
-Boardscript.SortByField('field', 'asc');
-	- Event reporting has it set via onclick attribute on <a> tag.
-
-Disable click on eocfields? Normal text surrounding will still change mouse cursor.
-
-eocfieldtag does not have trailing whitespace.
