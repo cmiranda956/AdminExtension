@@ -1,9 +1,0 @@
-TODO:
-Create the extension
-Resize window
-
-
-
-Bootstrap CDN not loaded until within a board view.
-    - not available at homepage as soon as you login
-
