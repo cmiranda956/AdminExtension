@@ -1,4 +1,4 @@
-import { beginPasswordReset, getUserList, executePasswordReset, goToUserDetails, beginDemobilize, executeDemobilization } from './useradmin.js';
+import { beginPasswordReset, getUserList, executePasswordReset, goToUserDetails, beginDemobilize} from './useradmin.js';
 
 const boardFilter = { urls: ['https://webeoc.bcfs.net/eoc7/boards/*'] };
 const homepageFilter = { urls: ['https://webeoc.bcfs.net/eoc7/home*'] };
@@ -88,7 +88,7 @@ chrome.runtime.onMessage.addListener((message, sender, response) => {
             let demobListener = () => {
                 chrome.scripting.executeScript({
                     target: {tabId: args[1]},
-                    func: executeDemobilization 
+                    func: executePasswordReset
                 });
                 chrome.webRequest.onCompleted.removeListener(demobListener);
             }
