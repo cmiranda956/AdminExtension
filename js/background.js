@@ -14,7 +14,7 @@ chrome.runtime.onStartup.addListener(() => {
 });
 
 // Create context menu item (right click menu) on installation
-// Option only available on highlighted text
+// Options only available on highlighted text
 chrome.runtime.onInstalled.addListener(() => {
     chrome.contextMenus.create({
         title: 'Reset Password',
@@ -68,12 +68,8 @@ chrome.webRequest.onCompleted.addListener(details => {
 
 // ************************************************************************
 // USAGE:
-//      chrome.runtime.sendMessage({message: [utilCommand, tabId?, finalCommand]});
-//
-// COMMANDS:
-//      toggleMobile      ['toggleMobile']
-//      passwordReset     ['passwordReset', tabId]
-//      searchUser        ['searchUser', tabId]
+//      Ex. chrome.runtime.sendMessage({message: ['searchUser', tabId, command]});
+//      from within content-script.
 // NOTES:
 //      - Message must be sent from content-script/function. Eg. Executed from
 //      the context of the webpage and not the extension.

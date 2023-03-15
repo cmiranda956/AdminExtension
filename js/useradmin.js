@@ -26,8 +26,8 @@ export function goToUserDetails(tabId, command) {
         console.warn('No matches');
         return
     }
-    document.querySelector('tbody tr a').click();
     chrome.runtime.sendMessage({message: [command, tabId]});
+    document.querySelector('tbody tr a').click();
 }
 //**********************************************************************
 // USAGE:
@@ -38,28 +38,31 @@ export function executePasswordReset() {
     document.getElementById('ctl00_ctl00_formBody_parentBody_txtConfirmPassword').value = 'Bcfs123';
     document.getElementById('ctl00_ctl00_formBody_parentBody_chkChangePassword').checked = true;
 }
+//**********************************************************************
+// USAGE:
+//      Removes all positions and fills comment box with proper details
+//      within the user details form.
+//**********************************************************************
 export function executeDemobilization() {
-    let d = new Date(); 
-    let date = (((d.getMonth() > 8) ? (d.getMonth() + 1)  : ('0'  + (d.getMonth()  + 1)))  + '/'  + ((d.getDate()  > 9)  ? d.getDate() : ('0'  +d.getDate()))  + '/'  +d.getFullYear()); 
-    let array = []; 
-    $('#ctl00_ctl00_formBody_parentBody_suitTabs_ctl01_ucPositions_divAssignedItems  > div  > table  > tbody  > tr  > td.sorting_1').each(function(){
-        let $this = $(this).text();
-        if ($this){
-            array.push($this + '\n');
-        }});
+    let d = new Date();
+    let date = (((d.getMonth() > 8) ? (d.getMonth() + 1)  : ('0'  + (d.getMonth()  + 1)))  + '/'  + ((d.getDate()  > 9)  ? d.getDate() : ('0'  +d.getDate()))  + '/'  +d.getFullYear());
+    let array = [];
+    document.querySelectorAll('#ctl00_ctl00_formBody_parentBody_suitTabs_ctl01_ucPositions_divAssignedItems > div > table > tbody > tr > td.sorting_1').forEach((element) => {
+        array.push(element.innerText + '\n');
+    });
     console.log({array});
-    $('#ctl00_ctl00_formBody_parentBody_suitTabs_ctl01_ucPositions_divItems  > div.suit - table - footer  > div  > a').click();
-    $('#ctl00_ctl00_formBody_parentBody_txtComments').val('DEMOB  - '+ date + '\n' + array);
-    $('#ctl00_ctl00_formBody_parentBody_suitTabs_ctl01_ucPositions_divAssignedItems  > div  > table  > thead  > tr  > th: nth-child(1)  > input[type="checkbox"]').click();
-    $('#ctl00_ctl00_formBody_parentBody_suitTabs_ctl01_ucPositions_divItems  > div.suit - table - footer  > div  > a').removeClass('disabled').click();
-    $("#ctl00_ctl00_formBody_parentBody_suitTabs_ctl01_ucPositions_mw_ctl07 > div.suit-table.suit-table--hover.suit-table--striped > div:nth-child(2) > table > tbody > tr:nth-child(1) > td:nth-child(1) > input[type=checkbox]").click();
-    $('#ctl00_ctl00_formBody_parentBody_suitTabs_ctl01_ucPositions_mw_ctl11_lbAssign').click();
-    $("#ctl00_ctl00_formBody_parentBody_suitTabs > ul > li:nth-child(2) > a").click();
-    let ma = $("#ctl00_ctl00_formBody_parentBody_suitTabs_ctl01_ucMobileDevices_sgvfAssigned > div.suit-table_header > div.suit-table_info.pull-left").text();
-    ma = $.trim(ma);
+    document.querySelector('#ctl00_ctl00_formBody_parentBody_suitTabs_ctl01_ucPositions_divItems  > div.suit-table-footer  > div  > a').click();
+    document.querySelector('#ctl00_ctl00_formBody_parentBody_txtComments').value = 'DEMOB - ' + date + '\n' + array;
+    document.querySelector('#ctl00_ctl00_formBody_parentBody_suitTabs_ctl01_ucPositions_divAssignedItems > div > table > thead > tr > th > input[type="checkbox"]').click();
+    document.querySelector('#ctl00_ctl00_formBody_parentBody_suitTabs_ctl01_ucPositions_divItems  > div.suit-table-footer  > div  > a').classList.remove('disabled');
+    document.querySelector('#ctl00_ctl00_formBody_parentBody_suitTabs_ctl01_ucPositions_divItems  > div.suit-table-footer  > div  > a').click();
+    document.querySelector('#ctl00_ctl00_formBody_parentBody_suitTabs_ctl01_ucPositions_mw_ctl07 > div.suit-table.suit-table--hover.suit-table--striped > div:nth-child(2) > table > tbody > tr:nth-child(1) > td:nth-child(1) > input[type=checkbox]').click();
+    document.querySelector('#ctl00_ctl00_formBody_parentBody_suitTabs_ctl01_ucPositions_mw_ctl11_lbAssign').click();
+    document.querySelector('#ctl00_ctl00_formBody_parentBody_suitTabs > ul > li:nth-child(2) > a').click();
+    let ma = document.querySelector('#ctl00_ctl00_formBody_parentBody_suitTabs_ctl01_ucMobileDevices_sgvfAssigned > div.suit-table_header > div.suit-table_info.pull-left').textContent.trim();
     if(ma !== '0 entries') {
-        $('#ctl00_ctl00_formBody_parentBody_suitTabs_ctl01_ucMobileDevices_sgvfAssigned_ctl08_sgvAssigned_ctl01_chkAll').click();
-        let rmMa=$('#ctl00_ctl00_formBody_parentBody_suitTabs_ctl01_ucMobileDevices_lbRemoveAssigned').attr('href');
+        document.querySelector('#ctl00_ctl00_formBody_parentBody_suitTabs_ctl01_ucMobileDevices_sgvfAssigned_ctl08_sgvAssigned_ctl01_chkAll').click();
+        let rmMa = document.querySelector('#ctl00_ctl00_formBody_parentBody_suitTabs_ctl01_ucMobileDevices_lbRemoveAssigned').getAttribute('href');
         window.location = rmMa;
     }
 }
