@@ -1,5 +1,5 @@
-const baseURL = 'https://webeoc.bcfs.net/eoc7/api/rest.svc';
-const adminUserListUrl = 'https://webeoc.bcfs.net/eoc7/admin/users/list.aspx'
+const baseURL = 'https://webeoc.nationalemr.us/eoc7/api/rest.svc';
+const adminUserListUrl = 'https://webeoc.nationalemr.us/eoc7/admin/users/list.aspx';
 //**********************************************************************
 // USAGE:
 //      Fills search box within the users menu of the admin center with
@@ -112,4 +112,12 @@ export function beginDemobilize(username) {
 //**********************************************************************
 export function getUserList() {
     return fetch(`${baseURL}/users`).then(response => { return response.json() });
+}
+//**********************************************************************
+// USAGE:
+//      Logic for list edits
+//**********************************************************************
+export function getElement() {
+    let element = document.activeElement;
+    console.log(element);
 }

@@ -1,13 +1,18 @@
-import { beginPasswordReset, getUserList, executePasswordReset, goToUserDetails, beginDemobilize, executeDemobilization } from './useradmin.js';
+import { beginPasswordReset, getUserList, executePasswordReset, goToUserDetails, beginDemobilize, executeDemobilization, getElement } from './useradmin.js';
 
-const boardFilter = { urls: ['https://webeoc.bcfs.net/eoc7/boards/*'] };
-const homepageFilter = { urls: ['https://webeoc.bcfs.net/eoc7/home*'] };
-const adminUserListFilter = { urls: ['https://webeoc.bcfs.net/eoc7/admin/users/list.aspx'] };
-const userDetailFilter = { urls: ['https://webeoc.bcfs.net/eoc7/admin/users/detail.aspx?userid=*'] };
+const boardFilter = { urls: ['https://webeoc.nationalemr.us/eoc7/boards/*'] };
+const homepageFilter = { urls: ['https://webeoc.nationalemr.us/eoc7/home*'] };
+const adminUserListFilter = { urls: ['https://webeoc.nationalemr.us/eoc7/admin/users/list.aspx'] };
+const userDetailFilter = { urls: ['https://webeoc.nationalemr.us/eoc7/admin/users/detail.aspx?userid=*'] };
 
 let arrUsers = [];
 let isDownloaded = false;
 
+async function getCurrentTab() {
+    const queryOptions = { active: true, lastFocusedWindow: true };
+    let tab = await chrome.tabs.query(queryOptions);
+    return tab.id;
+}
 // Reset flag after chrome shutdown
 chrome.runtime.onStartup.addListener(() => {
     isDownloaded = false;
@@ -26,6 +31,11 @@ chrome.runtime.onInstalled.addListener(() => {
         contexts: ['selection'],
         id: 'demobilize'
     });
+    chrome.contextMenus.create({
+        title: 'Edit lists',
+        contexts: ['frame'],
+        id: 'editLists'
+    });
 });
 chrome.contextMenus.onClicked.addListener(info => {
     switch(info.menuItemId) {
@@ -34,6 +44,15 @@ chrome.contextMenus.onClicked.addListener(info => {
             break;
         case 'demobilize':
             beginDemobilize(info.selectionText);
+            break;
+        case 'editLists':
+            chrome.scripting.executeScript({
+                target: {
+                    tabId: getCurrentTab(),
+                    allFrames: true
+                },
+            });
+            break;
     }
 });
 

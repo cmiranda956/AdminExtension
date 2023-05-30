@@ -13,7 +13,7 @@
 //***************************************************
 (function() {
     const menu = document.getElementById('adminMenu');
-    if(!menu) return;
+    if(!menu) console.log('adminMenu not found');
     menu.classList.add('dropdown');
     menu.innerHTML = `
         <button class="btn btn-sm btn-outline-warning dropdown-toggle" type="button" id="adminMenu" data-toggle="dropdown" aria-haspopup="true" area-expanded="false">

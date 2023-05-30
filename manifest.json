@@ -10,13 +10,14 @@
     "permissions": [
         "scripting",
         "webRequest",
-        "contextMenus"
+        "contextMenus",
+        "tabs"
     ],
     "action": {
         "default_title": "Testing actions"
     },
     "host_permissions": [
-        "https://webeoc.bcfs.net/eoc7/boards*"
+        "https://webeoc.nationalemr.us/eoc7/boards*"
     ],
     "icons": {
         "16":"./img/16x16.png",
