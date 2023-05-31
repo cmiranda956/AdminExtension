@@ -8,10 +8,15 @@ const userDetailFilter = { urls: ['https://webeoc.nationalemr.us/eoc7/admin/user
 let arrUsers = [];
 let isDownloaded = false;
 
-async function getCurrentTab() {
+function doInCurrentTab() {
     const queryOptions = { active: true, lastFocusedWindow: true };
-    let tab = await chrome.tabs.query(queryOptions);
-    return tab.id;
+    chrome.tabs.query(queryOptions, tab => {
+        console.log(tab.id);
+        chrome.scripting.executeScript({
+            target: {tabId: tab.id},
+            func: getElement
+        });
+    });
 }
 // Reset flag after chrome shutdown
 chrome.runtime.onStartup.addListener(() => {
@@ -33,7 +38,7 @@ chrome.runtime.onInstalled.addListener(() => {
     });
     chrome.contextMenus.create({
         title: 'Edit lists',
-        contexts: ['frame'],
+        contexts: ['all'],
         id: 'editLists'
     });
 });
@@ -46,12 +51,7 @@ chrome.contextMenus.onClicked.addListener(info => {
             beginDemobilize(info.selectionText);
             break;
         case 'editLists':
-            chrome.scripting.executeScript({
-                target: {
-                    tabId: getCurrentTab(),
-                    allFrames: true
-                },
-            });
+            doInCurrentTab();
             break;
     }
 });
